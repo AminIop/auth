@@ -1,2 +1,3 @@
 export { Login } from "./login";
-export { NotFound } from "./notFound/NotFound";
+export { Home } from "./home";
+export { NotFound } from "./notFound";
