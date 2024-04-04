@@ -1,0 +1,1 @@
+export const getAllTodosPlaceHolderSelector = state => state.todos.placeholder
