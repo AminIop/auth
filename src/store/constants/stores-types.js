@@ -1,4 +1,5 @@
 
 export const StoreTypes = {
-    COUNTER : 'counter'
+    COUNTER : 'counter',
+    TODOS : 'todos'
 }
