@@ -12,8 +12,13 @@
   "dependencies": {
     "@redux-devtools/extension": "3.3.0",
     "axios": "1.6.8",
+    "bcryptjs": "^2.4.3",
+    "cors": "2.8.5",
+    "dotenv": "16.4.5",
+    "express": "4.19.2",
     "i18next": "23.10.1",
     "i18next-browser-languagedetector": "7.2.1",
+    "jsonwebtoken": "^9.0.2",
     "loadash": "1.0.0",
     "prop-types": "15.8.1",
     "react": "18.2.0",
