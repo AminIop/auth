@@ -1,11 +1,30 @@
-import { takeLatest } from 'redux-saga/effects';
-import { CounterType } from '../constants/actions-types/counter';
-import { counterHandler } from './handlers/counter';
+import { call, put, takeLatest } from 'redux-saga/effects';
+import CommonType from '../constants/actions-types/common';
 
 
-export function* sagaWatcher(){
+function* handleApiCall(action) {
+    const { subType, api } = action
+    const startAction = () => ({ type: subType.START })
+
+    yield put(startAction())
+
+    try {
+        const response = yield call(api)
+        const data = response?.data
+        const successAction = () => ({ type: subType.SUCCESS, payload: data })
+        yield put(successAction())
+
+    } catch (error) {
+        const failAction = () => ({ type: subType.FAIL, payload: error })
+        console.log(error)
+        yield put(failAction())
+        console.log(error)
+    }
+}
+
+export function* sagaWatcher() {
     yield takeLatest(
-        CounterType.BYONE.GET.START,
-        counterHandler
+        CommonType.API_CALL,
+        handleApiCall
     )
 }
