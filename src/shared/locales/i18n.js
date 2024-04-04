@@ -1,18 +1,27 @@
 import i18next from "i18next";
-import I18nextBrowserLanguageDetector from "i18next-browser-languagedetector";
+import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 import { frTranslation } from "./fr";
 import { enTranslation } from "./en";
 
-i18next.use(initReactI18next)
-    .use(I18nextBrowserLanguageDetector)
+i18next
+    .use(LanguageDetector)
+    .use(initReactI18next)
     .init({
-        ressources: {
-            fr: frTranslation,
-            en: enTranslation
+        resources: {
+            fr: {
+                common: frTranslation
+            },
+            en: {
+                common: enTranslation
+            }
         },
+        fallbackLng: "en",
         ns: ['common'],
-        defaultNS: 'common'
-    })
+        defaultNS: 'common',
+        interpolation: {
+            escapeValue: false // react already safes from xss
+        }
+    });
 
-export default i18next
+export default i18next;
